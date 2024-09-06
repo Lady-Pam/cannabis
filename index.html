@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lady Pam Cannabis PHAN THONG !!! Your Online Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+<!--    <script src="script.js"></script>-->
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="logo200x200png.png" alt="Store Logo">
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+<!--            <li><a href="contact.html">CONTACT</a></li>-->
+        </ul>
+    </nav>
+
+    <section class="main-content">
+        <h1>Welcome to Our Cannabis Web Store</h1>
+        <p>Your one-stop shop for the best products.</p>
+
+        <div class="products">
+            
+            <div class="product">
+<!--                <img src="top_weed_400x300.jpg" alt="OG KUSH">-->
+                <div class="image-slider" data-product="1">
+                     <img src="top_weed_400x300.jpg" alt="Product Image 1" class="slider-image active">
+                     <img src="top_weed_2_400x300.jpg" alt="Product Image 2" class="slider-image">
+                     <img src="top_weed_jelly400x300.jpg" alt="Product Image 3" class="slider-image">
+                     <div class="arrow left" onclick="prevImage(1)">&#10094;</div>
+                     <div class="arrow right" onclick="nextImage(1)">&#10095;</div>
+                </div>
+                <h2>BLUE DREAM</h2>
+                <p>Blue Dream is a sativa-dominant hybrid strain comprising around 60% sativa and 40% indica. Blue Dream is one of the most popular varieties of cannabis.</p>
+                <p>150 THB / 1g</p>
+                <p>1350 THB / 10g</p>
+            </div>
+            
+            <div class="product">
+                <div class="image-slider" data-product="2">
+                     <img src="top_weed_2_400x300.jpg" alt="Product Image 1" class="slider-image active">
+                     <img src="top_weed_400x300.jpg" alt="Product Image 2" class="slider-image">
+                     <img src="top_weed_jelly400x300.jpg" alt="Product Image 3" class="slider-image">
+                     <div class="arrow left" onclick="prevImage(2)">&#10094;</div>
+                     <div class="arrow right" onclick="nextImage(2)">&#10095;</div>
+                </div>
+                <h2>TROPICANA CHERRY</h2>
+                <p>Tropicana Cherries is a tasty sativa-dominant hybrid created by crossing Tropicana Cookies with Cherry Cookies. It has a sweet and sour citrus profile, accented by notes of ripe cherries and nutty earthiness that come through in aroma and flavor. Tropicana Cookies has a range of effects, including cerebral and euphoric effects that enhance creativity and focus. It also has a mildly relaxing effect on the body.</p>
+                <p>150 THB / 1g</p>
+                <p>1350 THB / 10g</p>
+            </div>
+            <!-- Add more products as needed -->
+            
+            <div class="product">
+                <div class="image-slider" data-product="3">
+                     <img src="top_weed_jelly400x300.jpg" alt="Product Image 1" class="slider-image active">
+                     <img src="top_weed_400x300.jpg" alt="Product Image 2" class="slider-image">
+                     <img src="top_weed_2_400x300.jpg" alt="Product Image 3" class="slider-image">
+                     <div class="arrow left" onclick="prevImage(3)">&#10094;</div>
+                     <div class="arrow right" onclick="nextImage(3)">&#10095;</div>
+                </div>
+                <h2>JELLY BREATH</h2>
+                <p>Jelly Breath is a heavy indica-leaning hybrid that's sure to delight connoisseurs and newcomers alike. Born from a carefully curated blend of Mendo Breath and Do-Si-Dos, Jelly Breath offers a relaxing experience with an unforgettable sweet flavor.</p>
+                <p>150 THB / 1g</p>
+                <p>1350 THB / 10g</p>
+            </div>
+            
+            
+        </div>
+    </section>
+
+    <footer>
+        <div class="contact-links">
+            <a href="https://t.me/Martin_Poro" target="_blank">
+                <img src="telegram.png" alt="Telegram"> FIND US ON TELEGRAM
+            </a>
+            <a href="https://line.me/ti/p/Martin82pl" target="_blank">
+                <img src="line_png2.png" alt="LINE"> LINE
+            </a>
+            <a href="mailto:ladypam.cannabis@gmail.com">
+                <img src="mail100x100png.png" alt="email">EMAIL US
+            
+            </a>
+        </div>
+    </footer>
+    <script>
+    
+    function showSlide(productId, index) {
+    const productSlider = document.querySelector(`.image-slider[data-product="${productId}"]`);
+    const images = productSlider.querySelectorAll('.slider-image');
+
+    let currentSlide = productSlider.dataset.currentSlide || 0;
+    currentSlide = parseInt(currentSlide);
+
+    if (index >= images.length) {
+        currentSlide = 0;
+    } else if (index < 0) {
+        currentSlide = images.length - 1;
+    } else {
+        currentSlide = index;
+    }
+
+    // Save the current slide index in a data attribute
+    productSlider.dataset.currentSlide = currentSlide;
+
+    images.forEach((img, i) => {
+        img.classList.remove('active');
+        if (i === currentSlide) {
+            img.classList.add('active');
+        }
+    });
+}
+
+function nextImage(productId) {
+    const productSlider = document.querySelector(`.image-slider[data-product="${productId}"]`);
+    const currentSlide = parseInt(productSlider.dataset.currentSlide || 0);
+    showSlide(productId, currentSlide + 1);
+}
+
+function prevImage(productId) {
+    const productSlider = document.querySelector(`.image-slider[data-product="${productId}"]`);
+    const currentSlide = parseInt(productSlider.dataset.currentSlide || 0);
+    showSlide(productId, currentSlide - 1);
+}
+
+// Initialize the first slide for each product
+document.querySelectorAll('.image-slider').forEach(productSlider => {
+    productSlider.dataset.currentSlide = 0;
+    showSlide(productSlider.dataset.product, 0);
+});
+    </script>
+<!--
+    <script>
+        let currentSlide = 0;
+        const images = document.querySelectorAll('.slider-image');
+
+        function showSlide(index) {
+            if (index >= images.length) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = images.length - 1;
+            }
+
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === currentSlide) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        function nextImage() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function prevImage() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        // Initialize the first slide as active
+        showSlide(currentSlide);
+    </script>
+-->
+
+</body>
+</html>
